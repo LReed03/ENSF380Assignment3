@@ -10,7 +10,7 @@ public class DisasterVictim {
 	private Supply[] personalBelongings;
 	private final String ENTRY_DATE;
 	private String gender;
-	private String Comments;
+	private String comments;
 	private static int counter;
 	
 
@@ -47,8 +47,89 @@ public class DisasterVictim {
 	}
 
 	public void setDateOfBirth(String dateOfBirth) throws IllegalArgumentException{
-		// Either throw the exception in only the setter and use the setter in constructor or throw the exception everytime it is set
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public int getAssignedSocialID(){
+		return this.ASSIGNED_SOCIAL_ID;
+	}
+
+	public FamilyRelation[] getFamilyConnections(){
+		return this.familyConnections;
+	}
+
+	public MedicalRecord[] getMedicalRecords(){
+		return this.medicalRecords;
+	}
+	public Supply[] getPersonalBelongings(){
+		return this.personalBelongings;
+	}
+
+	public void setFamilyConnections(FamilyRelation[] connections){
+		this.familyConnections = connections;
+	}
+
+	public void setMedicalRecords(MedicalRecord[] records){
+		this.medicalRecords = records;
+	}
+
+	public void setPersonalBelongings(Supply[] belongings){
+		this.personalBelongings = belongings;
+	}
+
+	public void addPersonalBelongings(Supply supply){
+
+	}
+
+	public void removePersonalBelongings(Supply unwantedSupply){
+
+	}
+
+	public void removeFamilyConnection(FamilyRelation exRelation){
+
+	}
+
+	public void addFamilyConnection(FamilyRelation relation){
+
+	}
+
+	public void addMedicalRecord(MedicalRecord record){
+
+	}
+
+	public String getEntryDate(){
+		return this.ENTRY_DATE;
+	}
+
+	public String getComments(){
+		return this.comments;
+	}
+
+	public void setComments(String comments){
+		this.comments = comments;
+	}
+
+	public String getGender(){
+		return this.gender;
+	}
+
+	public void setGender(String gender){
+		this.gender = gender;
+	}
+
+	private static int generateSocialID(){
+		// Temp
+		return 0;
+	}
+
+	private static boolean isValidDateFormat(String date){
+		// Temp
+		return false;
+		
+	}
+
+	private static int convertDateStringToInt(String dateStr){
+		
 	}
 
 }
