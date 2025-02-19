@@ -1,5 +1,7 @@
 package edu.ucalgary.oop;
 
+import java.util.regex.Pattern;
+
 public class DisasterVictim {
 	private String firstName;
 	private String lastName;
@@ -123,13 +125,16 @@ public class DisasterVictim {
 	}
 
 	private static boolean isValidDateFormat(String date){
+		Pattern myPattern = Pattern.compile(date);
+		// use Regex for this function
+		Matcher mymatcher = myPattern.matcher(date);
 		// Temp
 		return false;
 		
 	}
 
 	private static int convertDateStringToInt(String dateStr){
-		
+
 	}
 
 }
