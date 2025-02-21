@@ -114,7 +114,7 @@ public class DisasterVictim {
 		this.comments = comments;
 	}
 
-	public String getGender(){
+	public String getGender() throws IllegalArgumentException{
 		return this.gender;
 	}
 
