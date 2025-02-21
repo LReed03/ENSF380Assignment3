@@ -87,19 +87,19 @@ public class DisasterVictim {
 	}
 
 	public void removePersonalBelongings(Supply unwantedSupply){
-
+		personalBelongings.remove(unwantedSupply);
 	}
 
 	public void removeFamilyConnection(FamilyRelation exRelation){
-
+		familyConnections.remove(exRelation);
 	}
 
 	public void addFamilyConnection(FamilyRelation relation){
-
+		familyConnections.add(relation);
 	}
 
 	public void addMedicalRecord(MedicalRecord record){
-
+		medicalRecords.add(record);
 	}
 
 	public String getEntryDate(){
