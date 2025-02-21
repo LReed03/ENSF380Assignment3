@@ -1,15 +1,18 @@
 package edu.ucalgary.oop;
-
+import java.util.regex;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DisasterVictim {
 	private String firstName;
 	private String lastName;
 	private String dateOfBirth;
 	private int ASSIGNED_SOCIAL_ID;
-	private FamilyRelation[] familyConnections;
-	private MedicalRecord[] medicalRecords;
-	private Supply[] personalBelongings;
+   	private List<FamilyRelation> familyConnections;
+    private List<MedicalRecord> medicalRecords;
+    private List<Supply> personalBelongings;
 	private final String ENTRY_DATE;
 	private String gender;
 	private String comments;
@@ -56,31 +59,31 @@ public class DisasterVictim {
 		return this.ASSIGNED_SOCIAL_ID;
 	}
 
-	public FamilyRelation[] getFamilyConnections(){
+	public List<FamilyRelation> getFamilyConnections(){
 		return this.familyConnections;
 	}
 
-	public MedicalRecord[] getMedicalRecords(){
+	public List<MedicalRecord> getMedicalRecords(){
 		return this.medicalRecords;
 	}
-	public Supply[] getPersonalBelongings(){
+	public List<Supply> getPersonalBelongings(){
 		return this.personalBelongings;
 	}
 
-	public void setFamilyConnections(FamilyRelation[] connections){
+	public void setFamilyConnections(List<FamilyRelation> connections){
 		this.familyConnections = connections;
 	}
 
-	public void setMedicalRecords(MedicalRecord[] records){
+	public void setMedicalRecords(List<MedicalRecord> records){
 		this.medicalRecords = records;
 	}
 
-	public void setPersonalBelongings(Supply[] belongings){
+	public void setPersonalBelongings(List<Supply> belongings){
 		this.personalBelongings = belongings;
 	}
 
 	public void addPersonalBelongings(Supply supply){
-
+		personalBelongings.add(supply);
 	}
 
 	public void removePersonalBelongings(Supply unwantedSupply){
@@ -125,7 +128,7 @@ public class DisasterVictim {
 	}
 
 	private static boolean isValidDateFormat(String date){
-		Pattern myPattern = Pattern.compile(date);
+		Pattern myPattern = Pattern.compile("");
 		// use Regex for this function
 		Matcher mymatcher = myPattern.matcher(date);
 		// Temp
