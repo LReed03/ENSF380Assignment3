@@ -1,8 +1,6 @@
 package edu.ucalgary.oop;
-import java.util.regex;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DisasterVictim {
@@ -88,6 +86,7 @@ public class DisasterVictim {
 
 	public void removePersonalBelongings(Supply unwantedSupply){
 		personalBelongings.remove(unwantedSupply);
+		
 	}
 
 	public void removeFamilyConnection(FamilyRelation exRelation){
@@ -137,7 +136,7 @@ public class DisasterVictim {
 	}
 
 	private static int convertDateStringToInt(String dateStr){
-
+		return 0;
 	}
 
 }
