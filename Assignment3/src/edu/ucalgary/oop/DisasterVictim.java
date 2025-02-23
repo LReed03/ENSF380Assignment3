@@ -1,7 +1,7 @@
 package edu.ucalgary.oop;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.List;
 
 public class DisasterVictim {
 	private String firstName;
@@ -14,7 +14,7 @@ public class DisasterVictim {
 	private final String ENTRY_DATE;
 	private String gender;
 	private String comments;
-	private static int counter;
+	private static int counter = 0;
 	
 
 	
@@ -22,12 +22,14 @@ public class DisasterVictim {
 	public DisasterVictim(String firstName, String ENTRY_DATE) {
 		this.ENTRY_DATE = ENTRY_DATE;
 		this.firstName = firstName;
+		this.ASSIGNED_SOCIAL_ID = generateSocialID();
 	}
 	
 	public DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth) throws IllegalArgumentException{
 		this.ENTRY_DATE = ENTRY_DATE;
 		this.firstName = firstName;
 		this.dateOfBirth = dateOfBirth;
+		this.ASSIGNED_SOCIAL_ID = generateSocialID();
 	}
 	
 	public String getFirstName() {
@@ -122,8 +124,10 @@ public class DisasterVictim {
 	}
 
 	private static int generateSocialID(){
-		// Temp
-		return 0;
+		// ID for first person is 2891
+		int socialId = 2891 + counter;
+		counter++;
+		return socialId;
 	}
 
 	private static boolean isValidDateFormat(String date){
