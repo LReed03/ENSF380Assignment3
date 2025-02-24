@@ -20,14 +20,31 @@ public class DisasterVictim {
 	
 	
 	public DisasterVictim(String firstName, String ENTRY_DATE) {
+		boolean validEntryDate = isValidDateFormat(ENTRY_DATE);
+		if (validEntryDate == false){
+			throw new IllegalArgumentException("Invalid date");
+		}
 		this.ENTRY_DATE = ENTRY_DATE;
 		this.firstName = firstName;
 		this.ASSIGNED_SOCIAL_ID = generateSocialID();
 	}
 	
 	public DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth) throws IllegalArgumentException{
+		int entryDateInt = convertDateStringToInt(ENTRY_DATE);
+		int dateOfBirthInt = convertDateStringToInt(dateOfBirth);
+		if(dateOfBirthInt > entryDateInt){
+			throw new IllegalArgumentException("Cant have birthday after the entry date");
+		}
+		boolean validEntryDate = isValidDateFormat(ENTRY_DATE);
+		if (validEntryDate == false){
+			throw new IllegalArgumentException("Invalid date");
+		}
 		this.ENTRY_DATE = ENTRY_DATE;
 		this.firstName = firstName;
+		boolean validDOB = isValidDateFormat(dateOfBirth);
+		if (validDOB == false){
+			throw new IllegalArgumentException("Invalid date");
+		}
 		this.dateOfBirth = dateOfBirth;
 		this.ASSIGNED_SOCIAL_ID = generateSocialID();
 	}
@@ -52,7 +69,14 @@ public class DisasterVictim {
 	}
 
 	public void setDateOfBirth(String dateOfBirth) throws IllegalArgumentException{
-		this.dateOfBirth = dateOfBirth;
+		boolean valid = isValidDateFormat(dateOfBirth);
+		if(valid == false){
+			throw new IllegalArgumentException("Not a valid DOB");
+		}
+		if(valid == true){
+			this.dateOfBirth = dateOfBirth;
+		}
+		
 	}
 
 	public int getAssignedSocialID(){
@@ -131,16 +155,22 @@ public class DisasterVictim {
 	}
 
 	private static boolean isValidDateFormat(String date){
-		Pattern myPattern = Pattern.compile("");
-		// use Regex for this function
+		String dateRegex = "^\\d{4}[-]{1}\\d{2}[-]\\d{2}$";
+		Pattern myPattern = Pattern.compile(dateRegex);
 		Matcher mymatcher = myPattern.matcher(date);
-		// Temp
-		return false;
+		if(mymatcher.find()){
+			return true;
+		}
+		else{
+			return false;
+		}
 		
 	}
 
 	private static int convertDateStringToInt(String dateStr){
-		return 0;
+		dateStr = dateStr.replace("-", "");
+		int dateInt = Integer.parseInt(dateStr);
+		return dateInt;
 	}
 
 }
