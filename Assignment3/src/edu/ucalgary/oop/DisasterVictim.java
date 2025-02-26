@@ -1,4 +1,6 @@
 package edu.ucalgary.oop;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,9 +10,9 @@ public class DisasterVictim {
 	private String lastName;
 	private String dateOfBirth;
 	private int ASSIGNED_SOCIAL_ID;
-   	private List<FamilyRelation> familyConnections;
-    private List<MedicalRecord> medicalRecords;
-    private List<Supply> personalBelongings;
+   	private FamilyRelation[] familyConnections;
+    private MedicalRecord[] medicalRecords;
+    private Supply[] personalBelongings;
 	private final String ENTRY_DATE;
 	private String gender;
 	private String comments;
@@ -83,48 +85,55 @@ public class DisasterVictim {
 		return this.ASSIGNED_SOCIAL_ID;
 	}
 
-	public List<FamilyRelation> getFamilyConnections(){
+	public FamilyRelation[] getFamilyConnections(){
 		return this.familyConnections;
 	}
 
-	public List<MedicalRecord> getMedicalRecords(){
+	public MedicalRecord[] getMedicalRecords(){
 		return this.medicalRecords;
 	}
-	public List<Supply> getPersonalBelongings(){
+	public Supply[] getPersonalBelongings(){
 		return this.personalBelongings;
 	}
 
-	public void setFamilyConnections(List<FamilyRelation> connections){
+	public void setFamilyConnections(FamilyRelation[] connections){
 		this.familyConnections = connections;
 	}
 
-	public void setMedicalRecords(List<MedicalRecord> records){
+	public void setMedicalRecords(MedicalRecord[] records){
 		this.medicalRecords = records;
 	}
 
-	public void setPersonalBelongings(List<Supply> belongings){
+	public void setPersonalBelongings(Supply[] belongings){
 		this.personalBelongings = belongings;
 	}
 
 	public void addPersonalBelongings(Supply supply){
-		personalBelongings.add(supply);
+		personalBelongings = Arrays.copyOf(personalBelongings, personalBelongings.length + 1);
+		personalBelongings[personalBelongings.length - 1] = supply;
 	}
 
 	public void removePersonalBelongings(Supply unwantedSupply){
-		personalBelongings.remove(unwantedSupply);
+		List<Supply> tempList = new ArrayList<>(Arrays.asList(personalBelongings));
+		tempList.remove(unwantedSupply);
+		personalBelongings = tempList.toArray(new Supply[0]);
 		
 	}
 
 	public void removeFamilyConnection(FamilyRelation exRelation){
-		familyConnections.remove(exRelation);
+		List<FamilyRelation> tempList = new ArrayList<>(Arrays.asList(familyConnections));
+		tempList.remove(exRelation);
+		familyConnections = tempList.toArray(new FamilyRelation[0]);
 	}
 
 	public void addFamilyConnection(FamilyRelation relation){
-		familyConnections.add(relation);
+		familyConnections = Arrays.copyOf(familyConnections, familyConnections.length + 1);
+		familyConnections[familyConnections.length - 1] = relation;
 	}
 
 	public void addMedicalRecord(MedicalRecord record){
-		medicalRecords.add(record);
+		medicalRecords = Arrays.copyOf(medicalRecords, medicalRecords.length + 1);
+		medicalRecords[medicalRecords.length - 1] = record;
 	}
 
 	public String getEntryDate(){
