@@ -29,6 +29,9 @@ public class DisasterVictim {
 		this.ENTRY_DATE = ENTRY_DATE;
 		this.firstName = firstName;
 		this.ASSIGNED_SOCIAL_ID = generateSocialID();
+		this.personalBelongings = new Supply[0];
+		this.medicalRecords = new MedicalRecord[0];
+		this.familyConnections = new FamilyRelation[0];
 	}
 	
 	public DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth) throws IllegalArgumentException{
@@ -49,6 +52,9 @@ public class DisasterVictim {
 		}
 		this.dateOfBirth = dateOfBirth;
 		this.ASSIGNED_SOCIAL_ID = generateSocialID();
+		this.personalBelongings = new Supply[0];
+		this.medicalRecords = new MedicalRecord[0];
+		this.familyConnections = new FamilyRelation[0];
 	}
 	
 	public String getFirstName() {
@@ -108,12 +114,12 @@ public class DisasterVictim {
 		this.personalBelongings = belongings;
 	}
 
-	public void addPersonalBelongings(Supply supply){
+	public void addPersonalBelonging(Supply supply){
 		personalBelongings = Arrays.copyOf(personalBelongings, personalBelongings.length + 1);
 		personalBelongings[personalBelongings.length - 1] = supply;
 	}
 
-	public void removePersonalBelongings(Supply unwantedSupply){
+	public void removePersonalBelonging(Supply unwantedSupply){
 		List<Supply> tempList = new ArrayList<>(Arrays.asList(personalBelongings));
 		tempList.remove(unwantedSupply);
 		personalBelongings = tempList.toArray(new Supply[0]);
